@@ -1,0 +1,91 @@
+body{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    color: #f5f5f5;
+    background: #333;
+    padding: 5rem 3rem;
+    font-family: "Boboto", sans-serif;
+    grid-gap: 3rem;
+}
+
+.box{
+    grid-column: span 4;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.box img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.box::before{
+    content: '';    
+    position: absolute;
+    width: 120%;
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    transform-origin: 100% 100%;
+    transition: 250ms;
+    top: -50%;
+    right: 0;
+    z-index: 10;
+}
+
+.box:after{
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    transform-origin: 0% 0%;
+    transition: 250ms;
+    z-index: 10;
+}
+
+.box:hover:after{
+    transform: rotateZ(-13deg);
+}
+
+.box:hover:before{
+    transform: rotateZ(-13deg);
+}
+
+.box .title{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(94, 6, 94);
+    transition: 200ms;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.box:hover .title{
+    opacity: 1;
+    
+}
+
+.box .title p{
+    font-size: 1.4rem;
+    border: 1px solid #f5f5f5;
+    padding: 5px 15px;
+    transition: 250ms;
+}
+
+.box:hover p{
+    transform: rotateZ(-15deg);
+}
+
+@media (max-width: 768px){
+    .box {
+        grid-column: span 12;
+    }
+}
